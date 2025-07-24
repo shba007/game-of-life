@@ -1,0 +1,64 @@
+name: Godot CD
+run-name: ${{ github.ref_name }}
+
+permissions:
+  contents: write
+  pages: write
+  packages: write
+  attestations: write
+  id-token: write
+
+on:
+  release:
+    types:
+      - published
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  REPO: ${{ github.repository }}
+  VERSION: ${{ github.ref_name }}
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🛠️ Setup godot and build
+        id: export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
+          relative_project_path: ./
+          cache: true
+          verbose: true
+          use_preset_export_path: true
+
+      - name: ⚙️ Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: ⚙️ Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/Web
+
+  deploy-web:
+    needs: build-web
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,14 @@
+# Git/Github
+.git
+.github
+.gitignore
+
+# Godot dev/build outputs
+dist
+
+# Env files
+.env*
+
+# Dockerfile
+.dockerignore
+Dockerfile

@@ -1,0 +1,7 @@
+name: 'game-of-life-dev'
+services:
+  web:
+    build: .
+    restart: on-failure:3
+    ports:
+      - 3610:8080
