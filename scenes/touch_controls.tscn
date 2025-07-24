@@ -5,21 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://ds8eej58gyxf6" path="res://assets/sprites/control_up.png" id="3_c1tq5"]
 
 [node name="TouchControls" type="CanvasLayer"]
+follow_viewport_enabled = true
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2(54, 926)
-scale = Vector2(1.25, 1.25)
+position = Vector2(64, 856)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("1_6e4pk")
 action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(288, 926)
-scale = Vector2(1.25, 1.25)
+position = Vector2(384, 856)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_notdv")
 action = "move_right"
 
 [node name="Jump" type="TouchScreenButton" parent="."]
-position = Vector2(1766, 926)
-scale = Vector2(1.25, 1.25)
+position = Vector2(1778, 696)
+scale = Vector2(4, 4)
 texture_normal = ExtResource("3_c1tq5")
 action = "jump"
