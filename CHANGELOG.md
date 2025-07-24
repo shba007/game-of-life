@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Button size/position fixed ([b74794f](https://github.com/shba007/game-of-life/commit/b74794f))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.2
 
 [compare changes](https://github.com/shba007/game-of-life/compare/v0.0.1...v0.0.2)
