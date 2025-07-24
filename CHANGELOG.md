@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.0.1...v0.0.2)
+
+### 🩹 Fixes
+
+- Export path changed ([7b39fa5](https://github.com/shba007/game-of-life/commit/7b39fa5))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.1
 
 
