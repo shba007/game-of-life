@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.1.1
+
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.1.0...v0.1.1)
+
+### 🩹 Fixes
+
+- Update export presets for advanced options and display settings ([ae3a714](https://github.com/shba007/game-of-life/commit/ae3a714))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.1.0
 
 [compare changes](https://github.com/shba007/game-of-life/compare/v0.0.3...v0.1.0)
