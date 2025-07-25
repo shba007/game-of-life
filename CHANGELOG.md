@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.1.0
+
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.0.3...v0.1.0)
+
+### 💅 Refactors
+
+- Touch controls and add dynamic aspect scaling ([c4fbbe2](https://github.com/shba007/game-of-life/commit/c4fbbe2))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.3
 
 [compare changes](https://github.com/shba007/game-of-life/compare/v0.0.2...v0.0.3)
