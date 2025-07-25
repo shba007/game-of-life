@@ -1,9 +1,9 @@
 # Changelog
 
 
-## v0.0.4
+## v0.1.0
 
-[compare changes](https://github.com/shba007/game-of-life/compare/v0.0.3...v0.0.4)
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.0.3...v0.1.0)
 
 ### 💅 Refactors
 
