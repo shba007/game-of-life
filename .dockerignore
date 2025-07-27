@@ -5,6 +5,7 @@
 
 # Godot dev/build outputs
 dist
+addons
 
 # Env files
 .env*
