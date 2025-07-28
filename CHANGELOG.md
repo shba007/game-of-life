@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.2.0
+
+[compare changes](https://github.com/shba007/game-of-life/compare/v0.1.0...v0.2.0)
+
+### 🚀 Enhancements
+
+- Added music, pickup and kill button ([84b9d40](https://github.com/shba007/game-of-life/commit/84b9d40))
+
+### 🩹 Fixes
+
+- Update export presets for advanced options and display settings ([e07c2dd](https://github.com/shba007/game-of-life/commit/e07c2dd))
+
+### 🏡 Chore
+
+- Add godot git plugin files and configuration ([36101a1](https://github.com/shba007/game-of-life/commit/36101a1))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.1.0
 
 [compare changes](https://github.com/shba007/game-of-life/compare/v0.0.3...v0.1.0)
