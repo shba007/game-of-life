@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://3jbun11nie8q"]
+[gd_scene load_steps=25 format=3 uid="uid://3jbun11nie8q"]
 
 [ext_resource type="Texture2D" uid="uid://d2g4lanupan4" path="res://assets/sprites/world_tileset.png" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://blthgiag8mfhy" path="res://scripts/main.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://bq7hc32no22ev" path="res://scripts/game_manager.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dj0vslw01s2l2" path="res://scenes/player.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dxps577mi57pm" path="res://scenes/kill_zone.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d2s8030d3dax2" path="res://scenes/platform.tscn" id="4_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://5g8ihegwtsva" path="res://assets/sprites/control_left.png" id="7_85g3d"]
-[ext_resource type="Texture2D" uid="uid://grkb6a5j3td3" path="res://assets/sprites/control_right.png" id="8_choun"]
-[ext_resource type="Texture2D" uid="uid://ds8eej58gyxf6" path="res://assets/sprites/control_up.png" id="9_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://juk6s6ebraa2" path="res://assets/sprites/arrows.png" id="5_o6xl0"]
+[ext_resource type="FontFile" uid="uid://deauhceaulcdy" path="res://assets/fonts/PixelOperator8.ttf" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://5ebmewdhmqg" path="res://scenes/coin.tscn" id="9_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_jyhfs")
@@ -182,6 +183,38 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 distance = -115.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("5_o6xl0")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="Animation" id="Animation_lbhrr"]
 length = 5.0
 tracks/0/type = "value"
@@ -241,6 +274,10 @@ _data = {
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tefeu")
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_85g3d")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lbhrr")
 format = 2
@@ -268,6 +305,63 @@ position = Vector2(483, 45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape2D_iywne")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_right = 2160.0
+grow_vertical = 0
+
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(64, 852)
+scale = Vector2(2.56, 2.56)
+texture_normal = SubResource("AtlasTexture_tipki")
+texture_pressed = SubResource("AtlasTexture_o6xl0")
+action = "move_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(384, 856)
+scale = Vector2(2.56, 2.56)
+texture_normal = SubResource("AtlasTexture_85g3d")
+texture_pressed = SubResource("AtlasTexture_ya4ey")
+action = "move_right"
+visibility_mode = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2160.0
+offset_top = -1080.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Jump" type="TouchScreenButton" parent="CanvasLayer/Control2"]
+position = Vector2(1768, 688)
+scale = Vector2(5.12, 5.12)
+texture_normal = SubResource("AtlasTexture_choun")
+texture_pressed = SubResource("AtlasTexture_eb6dy")
+action = "jump"
+visibility_mode = 1
+
+[node name="reset" type="TouchScreenButton" parent="CanvasLayer/Control2"]
+position = Vector2(1924, 64)
+scale = Vector2(2.56, 2.56)
+texture_normal = SubResource("AtlasTexture_trceg")
+texture_pressed = SubResource("AtlasTexture_a8y0u")
+action = "reset"
+visibility_mode = 1
+
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("4_o6xl0")]
@@ -291,6 +385,15 @@ position = Vector2(355, -348)
 [node name="Platform7" parent="Platforms" instance=ExtResource("4_o6xl0")]
 position = Vector2(407, -428)
 
+[node name="Platform8" parent="Platforms" instance=ExtResource("4_o6xl0")]
+position = Vector2(1046, 129)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform8"]
+libraries = {
+&"": SubResource("AnimationLibrary_iywne")
+}
+autoplay = "move"
+
 [node name="Platform9" parent="Platforms" instance=ExtResource("4_o6xl0")]
 position = Vector2(1024, -67)
 
@@ -303,15 +406,6 @@ position = Vector2(1023, -160)
 [node name="Platform12" parent="Platforms" instance=ExtResource("4_o6xl0")]
 position = Vector2(1105, -207)
 
-[node name="Platform8" parent="Platforms" instance=ExtResource("4_o6xl0")]
-position = Vector2(1046, 129)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform8"]
-libraries = {
-&"": SubResource("AnimationLibrary_iywne")
-}
-autoplay = "move"
-
 [node name="Platform13" parent="Platforms" instance=ExtResource("4_o6xl0")]
 position = Vector2(1046, 129)
 
@@ -321,45 +415,70 @@ libraries = {
 }
 autoplay = "lift"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Coins" type="Node" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -1080.0
-offset_right = 2160.0
-grow_vertical = 0
+[node name="Coin" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(267, -24)
 
-[node name="Left" type="TouchScreenButton" parent="CanvasLayer/Control"]
-position = Vector2(64, 856)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("7_85g3d")
-action = "move_left"
+[node name="Coin2" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(245, -24)
 
-[node name="Right" type="TouchScreenButton" parent="CanvasLayer/Control"]
-position = Vector2(384, 856)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_choun")
-action = "move_right"
+[node name="Coin3" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(289, -24)
 
-[node name="Control2" type="Control" parent="CanvasLayer"]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2160.0
-offset_top = -1080.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Coin4" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(382, -72)
 
-[node name="Jump" type="TouchScreenButton" parent="CanvasLayer/Control2"]
-position = Vector2(1778, 696)
-scale = Vector2(4, 4)
-texture_normal = ExtResource("9_ya4ey")
-action = "jump"
+[node name="Coin5" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(400, -72)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(451, -24)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(471, -24)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(198, -24)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("9_85g3d")]
+position = Vector2(651, -36)
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = -46.0
+offset_top = -100.0
+offset_right = 78.0
+offset_bottom = -49.0
+theme_override_fonts/font = ExtResource("8_85g3d")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = 131.0
+offset_top = -125.0
+offset_right = 255.0
+offset_bottom = -74.0
+theme_override_fonts/font = ExtResource("8_85g3d")
+theme_override_font_sizes/font_size = 8
+text = "Left/Right Arrow 
+keys to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = 336.0
+offset_top = -127.0
+offset_right = 460.0
+offset_bottom = -76.0
+theme_override_fonts/font = ExtResource("8_85g3d")
+theme_override_font_sizes/font_size = 8
+text = "E to Suicide"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
